@@ -1,11 +1,16 @@
 import express from "express"
-import router from "./router/exercicios"
+import router from "./router/exercicios.js"
 
 const app = express()
 app.use(express.json())
 
 app.use('/api', router)
 
-app.listen(3000, () => {
-    console.log("Servidor rodando na porta 3000")
-})
+if(process.env.NODE_ENV !== "test") {
+    app.listen(3000, () => {
+        console.log("Servidor rodando na porta 3000")
+    })
+}
+
+
+export default app
